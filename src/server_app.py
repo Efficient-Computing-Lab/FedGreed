@@ -23,7 +23,6 @@ def gen_evaluate_fn(model_config: ModelConfig):
         labels = labels[len(labels) // 2 :]
     test_dataloader = set_dataloader(model_config, images, labels)
 
-    # test_loader = load_server_data(model_config, settings.server.dataset_size)
     model = model_config.model
 
     def evaluate(server_round, parameters_ndarrays, config):

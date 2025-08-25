@@ -153,11 +153,8 @@ class FedGreed(FedAvg):
             loss, _ = test(self.model, self.defense_dataloader)
             updated_results.append((loss, client_proxy, fit_res))
         updated_results = sorted(updated_results, key=lambda x: x[0])  # Sort by loss
-        ordered_losses = list(map(lambda r: r[0], updated_results))
-        print(f"Ordered losses: {ordered_losses}")
         updated_results = [(client, res) for _, client, res in updated_results]  # Remove loss
         parameters_aggregated, num_selected_clients = self._select_best_aggregation_by_loss(updated_results)
-        print(f"Selected clients: {num_selected_clients}")
         return parameters_aggregated, num_selected_clients
 
     @staticmethod
@@ -198,22 +195,18 @@ class FedGreed(FedAvg):
         num_honest_users = 0
         for i in range(1, len(results) + 1):
             sampled_results = results[:i]
-            aggregated_parameters = ndarrays_to_parameters(self._aggregate_mean(sampled_results))
+            aggregated_parameters = ndarrays_to_parameters(aggregate_inplace(sampled_results))
             set_weights(self.model, parameters_to_ndarrays(aggregated_parameters))
             aggregated_loss, _ = test(self.model, self.defense_dataloader)
             if aggregated_loss > previous_aggregated_loss:
-                print(f"Aggregated loss: {aggregated_loss} and previous loss: {previous_aggregated_loss}")
                 break
-            if i == 1 or aggregated_loss < min_aggregated_loss:
+            if aggregated_loss < min_aggregated_loss:
                 min_aggregated_loss = aggregated_loss
                 min_aggregated_parameters = aggregated_parameters
                 num_honest_users = i
             aggregated_losses.append(aggregated_loss)
             previous_aggregated_loss = aggregated_loss
 
-        print(f"Aggregated losses: {aggregated_losses}")
-        print(f"Minimum loss: {min_aggregated_loss}")
-        print(f"Num Honest users: {num_honest_users}")
         return min_aggregated_parameters, num_honest_users
 
     def evaluate(self, server_round: int, parameters: Parameters):
