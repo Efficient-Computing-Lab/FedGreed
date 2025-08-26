@@ -6,8 +6,19 @@ This repository contains the official implementation of our paper:
 
 **Authors**: Emmanouil Kritharakis, Dusan Jakovetic, Antonios Makris, and Konstantinos Tserpes   
 **Conference**: 3rd IEEE International Conference on Federated Learning Technologies and Applications @ FLTA (2025)  
-**Paper**: [coming soon] <br>
-**Citation**: [coming soon]
+**Paper**: [FedGreed: A Byzantine-Robust Loss-Based Aggregation Method for Federated Learning](https://arxiv.org/abs/2508.18060) <br>
+**Citation**:
+```bibtex
+@misc{kritharakis2025fedgreedbyzantinerobustlossbasedaggregation,
+      title={FedGreed: A Byzantine-Robust Loss-Based Aggregation Method for Federated Learning}, 
+      author={Emmanouil Kritharakis and Antonios Makris and Dusan Jakovetic and Konstantinos Tserpes},
+      year={2025},
+      eprint={2508.18060},
+      archivePrefix={arXiv},
+      primaryClass={cs.LG},
+      url={https://arxiv.org/abs/2508.18060}, 
+}
+```
 
 ### 🔍 Abstract
 > Federated Learning (FL) enables collaborative model training across multiple clients while preserving data privacy by keeping local datasets on-device. In this work, we address FL settings where
