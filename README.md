@@ -5,7 +5,7 @@
 This repository contains the official implementation of our paper:
 
 **Authors**: Emmanouil Kritharakis, Dusan Jakovetic, Antonios Makris, and Konstantinos Tserpes   
-**Conference**: 3rd IEEE International Conference on Federated Learning Technologies and Applications @ FLTA (2025)  
+**Conference**: 3rd IEEE International Conference on Federated Learning Technologies & Applications @ FLTA (2025)  
 **Paper**: [FedGreed: A Byzantine-Robust Loss-Based Aggregation Method for Federated Learning](https://arxiv.org/abs/2508.18060) <br>
 **Citation**:
 ```bibtex
